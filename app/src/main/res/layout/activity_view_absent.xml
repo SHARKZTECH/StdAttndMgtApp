@@ -3,14 +3,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/header_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Absent List"
+        android:textSize="30sp"
+        android:layout_marginVertical="20dp"
+        android:textAlignment="center" />
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingHorizontal="20dp"
+        android:layout_below="@id/header_title">
 
         <LinearLayout
             android:id="@+id/absent_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:orientation="vertical"
+            android:paddingHorizontal="10dp"/>
     </ScrollView>
 </RelativeLayout>
