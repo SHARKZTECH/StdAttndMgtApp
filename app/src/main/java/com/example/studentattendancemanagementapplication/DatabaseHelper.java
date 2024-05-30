@@ -75,4 +75,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("UPDATE " + TABLE_STUDENT + " SET " + COLUMN_ABSENCE_COUNT + " = " + COLUMN_ABSENCE_COUNT + " + 1 WHERE " + COLUMN_ID + " = ?", new Object[]{studentId});
     }
+
+    public List<Student> getAbsentStudents() {
+        List<Student> absentList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_STUDENT + " WHERE " + COLUMN_ABSENCE_COUNT + " > 0", null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                @SuppressLint("Range") int studentId = cursor.getInt(cursor.getColumnIndex(COLUMN_ID));
+                @SuppressLint("Range") String firstName = cursor.getString(cursor.getColumnIndex(COLUMN_FIRST_NAME));
+                @SuppressLint("Range") String lastName = cursor.getString(cursor.getColumnIndex(COLUMN_LAST_NAME));
+                @SuppressLint("Range") int absenceCount = cursor.getInt(cursor.getColumnIndex(COLUMN_ABSENCE_COUNT));
+
+                Student student = new Student(studentId, firstName, lastName, absenceCount);
+                absentList.add(student);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return absentList;
+    }
 }
