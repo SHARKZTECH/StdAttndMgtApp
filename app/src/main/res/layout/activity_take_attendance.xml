@@ -3,16 +3,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+<TextView
+    android:id="@+id/header_title"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Take Attendance"
+    android:textSize="30sp"
+    android:layout_marginVertical="20dp"
+    android:textAlignment="center" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/header_title"
         android:layout_above="@id/submit_attendance_button">
 
         <LinearLayout
             android:id="@+id/student_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"/>
     </ScrollView>
 
     <Button
@@ -22,5 +33,6 @@
         android:text="Submit Attendance"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_margin="16dp" />
+        android:layout_margin="16dp"
+        android:background="@drawable/button_background"/>
 </RelativeLayout>
